@@ -1,0 +1,24 @@
+class Solution {
+    public int maxSubarraySum(int[] arr, int k) {
+        // Code here
+        
+        int windowSum =0 ;
+        int maxSum =0;
+        for(int i =0; i<k ; i++){
+            windowSum = windowSum+arr[i];
+        }
+        maxSum = windowSum;
+       int i =k;
+        //Sliding the window
+        
+        while(i<arr.length){
+            windowSum = windowSum+arr[i];
+            windowSum = windowSum-arr[i-k];
+            maxSum = Math.max(maxSum,windowSum);
+            i++;
+        }
+        return maxSum;
+        
+        
+    }
+}
